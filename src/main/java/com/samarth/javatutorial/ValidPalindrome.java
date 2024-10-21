@@ -42,25 +42,27 @@ public class ValidPalindrome {
     }
 
     public static boolean isPalindrome(String s) {
-        if (s.isEmpty())
+        if (s.isEmpty()) {
             return true;
+        }
+
         int start = 0;
         int end = s.length() - 1;
+
         while(start <= end) {
-            char currFirst = s.charAt(start);
-            char currLast = s.charAt(end);
-            if (!Character.isLetterOrDigit(currFirst)) {
+            if (!Character.isLetterOrDigit(s.charAt(start))) {
                 start++;
-            } else if (!Character.isLetterOrDigit(currLast)) {
+            } else if (!Character.isLetterOrDigit(s.charAt(end))) {
                 end--;
             } else {
-                if (Character.toLowerCase(currFirst) != Character.toLowerCase(currLast)) {
+                if (Character.toLowerCase(s.charAt(start)) != Character.toLowerCase(s.charAt(end))) {
                     return false;
                 }
                 start++;
                 end--;
             }
         }
+
         return true;
     }
 }
