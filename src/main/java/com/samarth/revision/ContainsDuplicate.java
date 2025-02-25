@@ -1,10 +1,11 @@
 package main.java.com.samarth.revision;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class ContainsDuplicate {
     public static void main(String[] args) {
-        int[] nums = {1, 2, 1};
+        int[] nums = {1, 2};
         System.out.println(containsDuplicate(nums));
     }
 
