@@ -9,18 +9,16 @@ public class GroupAnagrams {
     }
 
     public static List<List<String>> groupAnagrams(String[] strs) {
-        Map<String, List<String>> map = new HashMap<>();
-
+        HashMap<String, ArrayList<String>> map = new HashMap();
         for (String s : strs) {
-            char[] sortedChars = s.toCharArray();
-            Arrays.sort(sortedChars);
-            String sortedWord = new String(sortedChars);
-            if (!map.containsKey(sortedWord)) {
-                map.put(sortedWord, new ArrayList<String>());
+            char[] arr = s.toCharArray();
+            Arrays.sort(arr);
+            String sortedChars = new String(arr);
+            if (!map.containsKey(sortedChars)) {
+                map.put(sortedChars, new ArrayList<>());
             }
-            map.get(sortedWord).add(s);
+            map.get(sortedChars).add(s);
         }
-
         return new ArrayList<>(map.values());
     }
 }

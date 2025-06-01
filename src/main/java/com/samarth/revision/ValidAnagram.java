@@ -5,32 +5,28 @@ import java.util.HashSet;
 
 public class ValidAnagram {
     public static void main(String args[]) {
-        String s = "aacc";
-        String t = "ccac";
+        String s = "anagram";
+        String t = "nagaram";
         System.out.println(isAnagram(s, t));
     }
 
     public static boolean isAnagram(String s, String t) {
-        if (s.length() != t.length()) {
-            return false;
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (Character i : s.toCharArray()) {
+            map.put(i, map.getOrDefault(i, 0) + 1);
         }
-        HashMap<Character, Integer> mp = new HashMap<>();
-        for(Character c: s.toCharArray()) {
-            mp.put(c, mp.getOrDefault(c,0) + 1);
-        }
-
-        for (Character c: t.toCharArray()) {
-            if (!mp.containsKey(c)) {
-                return false;
+        for (Character i : t.toCharArray()) {
+            if (map.containsKey(i)) {
+                map.put(i, map.get(i) - 1);
             } else {
-                if (mp.get(c) == 1) {
-                    mp.remove(c);
-                } else {
-                    mp.put(c, mp.get(c)-1);
-                }
+                return false;
             }
         }
-
-        return mp.isEmpty();
+        for (int i : map.values()) {
+            if (i != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
