@@ -1,7 +1,9 @@
 package main.java.com.samarth.revision;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class TopKFrequentElements {
@@ -12,22 +14,19 @@ public class TopKFrequentElements {
     }
 
     public static int[] topKFrequent(int[] nums, int k) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        HashMap<Integer, Integer> hm = new HashMap<>();
 
         for (int i : nums) {
-            if (!map.containsKey(i)) {
-                map.put(i, 0);
-            }
-            map.put(i, map.get(i) + 1);
+            hm.put(i, hm.getOrDefault(i, 0) + 1);
         }
 
-        ArrayList<Integer> arr = new ArrayList<>(map.keySet());
-        arr.sort((a,b) -> map.get(b) - map.get(a));
+        ArrayList<Integer> keys = new ArrayList<>(hm.keySet());
+        keys.sort((a, b) -> (hm.get(b) - hm.get(a)));
 
-        int[] result = new int[k];
+        int[] res = new int[k];
         for (int i = 0; i < k; i++) {
-            result[i] = arr.get(i);
+            res[i] = keys.get(i);
         }
-        return result;
+        return res;
     }
 }
