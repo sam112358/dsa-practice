@@ -5,18 +5,18 @@ import java.util.HashMap;
 
 public class TwoSum {
     public static void main(String[] args) {
-        int[] nums = {3,3};
+        int[] nums = {3,2,4};
         int target = 6;
         System.out.println(Arrays.toString(twoSum(nums, target)));
     }
 
     public static int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> map = new HashMap<>();
+        HashMap<Integer, Integer> hm = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
-            if (map.containsKey(nums[i])) {
-                return new int[]{i, map.get(nums[i])};
+            if (hm.containsKey(nums[i])) {
+                return new int[]{i, hm.get(nums[i])};
             }
-            map.put(target - nums[i], i);
+            hm.put(target-nums[i], i);
         }
         return new int[]{-1, -1};
     }
