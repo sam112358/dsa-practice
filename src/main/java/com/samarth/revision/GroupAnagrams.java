@@ -9,13 +9,13 @@ public class GroupAnagrams {
     }
 
     public static List<List<String>> groupAnagrams(String[] strs) {
-        HashMap<String, ArrayList<String>> hm = new HashMap<>();
-        for(String s: strs) {
+        HashMap<String, List<String>> hm = new HashMap<>();
+        for (String s : strs) {
             char[] temp = s.toCharArray();
             Arrays.sort(temp);
             String sorted = Arrays.toString(temp);
             if (!hm.containsKey(sorted)) {
-                hm.put(sorted, new ArrayList<>());
+                hm.put(sorted, new ArrayList<String>());
             }
             hm.get(sorted).add(s);
         }
